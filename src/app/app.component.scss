@@ -1,0 +1,47 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Admin Layout Specific */
+.admin-layout {
+  --header-bg: #343a40;
+  --sidebar-bg: #2c3e50;
+  --main-bg: #f8f9fa;
+  --text-color: #333;
+}
+
+/* Kiosk Layout Specific */
+.kiosk-layout {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --accent-color: #ff6b6b;
+}
+
+/* Disable text selection in kiosk mode */
+.kiosk-mode * {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+/* Touch-friendly buttons for kiosk */
+.kiosk-mode button {
+  min-height: 60px;
+  min-width: 120px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+/* Fullscreen mode for kiosk */
+.kiosk-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+}

@@ -1,0 +1,73 @@
+/* -------------------------------------- */
+/* kiosk-language.component.scss */
+// .kiosk-container {
+//   height: 100vh;
+//   background: radial-gradient(circle at top, #1e3a8a, #020617);
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   color: #fff;
+//   text-align: center;
+// }
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  animation: float 4s ease-in-out infinite;
+}
+
+.subtitle {
+  opacity: 0.85;
+  margin-bottom: 3rem;
+}
+
+.language-buttons {
+  display: flex;
+  gap: 3rem;
+}
+
+.lang-card {
+  width: 220px;
+  height: 160px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.lang-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.english {
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+}
+
+.hindi {
+  background: linear-gradient(135deg, #ea580c, #facc15);
+}
+
+.flag {
+  font-size: 3rem;
+}
+
+.selected {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

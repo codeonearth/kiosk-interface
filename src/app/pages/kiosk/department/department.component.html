@@ -1,0 +1,39 @@
+<div class="kiosk-wrapper">
+
+  <div class="kiosk-card">
+
+    <!-- Title -->
+    <h1 class="title">Select the Department</h1>
+
+    <!-- Department Grid -->
+    <div class="dept-grid">
+
+      <button class="dept-card electricity"
+              (click)="selectDepartment('electricity')">
+        <span class="icon">⚡</span>
+        <span class="label">ELECTRICITY</span>
+      </button>
+
+      <button class="dept-card water"
+              (click)="selectDepartment('water')">
+        <span class="icon">💧</span>
+        <span class="label">WATER</span>
+      </button>
+
+      <button class="dept-card gas"
+              (click)="selectDepartment('gas')">
+        <span class="icon">🔥</span>
+        <span class="label">GAS</span>
+      </button>
+
+      <button class="dept-card municipality"
+              (click)="selectDepartment('municipality')">
+        <span class="icon">🏠</span>
+        <span class="label">MUNICIPALITY</span>
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

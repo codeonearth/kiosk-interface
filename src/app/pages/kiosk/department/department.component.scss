@@ -1,0 +1,101 @@
+/* Full screen kiosk background */
+// .kiosk-wrapper {
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background: radial-gradient(circle at top, #1e3a8a, #020617);
+// }
+
+/* Glass card */ 
+.kiosk-card {
+  width: 90%;
+  max-width: 1000px;
+  padding: 3.5rem 4rem;
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Title */
+.title {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 3.5rem;
+  color: #fff;
+}
+
+/* Grid layout */
+.dept-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+/* Card base */
+.dept-card {
+  height: 150px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.3s ease;
+}
+
+.dept-card:hover {
+  transform: scale(1.06);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Icon */
+.icon {
+  font-size: 2.8rem;
+}
+
+/* Label */
+.label {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  opacity: 0.95;
+}
+
+/* Individual themes */
+.electricity {
+  background: linear-gradient(135deg, #166534, #22c55e);
+}
+
+.water {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+}
+
+.gas {
+  background: linear-gradient(135deg, #7c2d12, #ef4444);
+}
+
+.municipality {
+  background: linear-gradient(135deg, #1f2933, #374151);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dept-card {
+    height: 135px;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+}

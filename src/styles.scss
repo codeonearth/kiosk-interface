@@ -1,0 +1,32 @@
+body {
+  height: 100vh;
+  background: radial-gradient(circle at top, #1e3a8a, #020617);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+
+// body {
+//   height: 100vh;
+//   margin: 0;
+
+//   /* Deep layered gradient */
+//   background:
+//     radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), transparent 40%),
+//     radial-gradient(circle at top right, rgba(34, 197, 94, 0.18), transparent 45%),
+//     radial-gradient(circle at bottom, rgba(168, 85, 247, 0.15), transparent 50%),
+//     linear-gradient(135deg, #020617, #020617, #0f172a);
+
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+
+//   color: #ffffff;
+//   text-align: center;
+//   font-family: 'Segoe UI', system-ui, sans-serif;
+//   overflow: hidden;
+// }

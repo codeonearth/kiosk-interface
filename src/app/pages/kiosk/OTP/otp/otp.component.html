@@ -1,0 +1,60 @@
+<div class="kiosk-wrapper">
+
+  <!-- Glass Card -->
+  <div class="kiosk-card">
+
+    <!-- Header -->
+    <div class="header">
+      <h1>{{ text.title }}</h1>
+      <p>{{ text.subtitle }}</p>
+    </div>
+
+    <!-- Phone Input -->
+    <div class="form-group">
+      <label>{{ text.mobileLabel }}</label>
+      <input
+        type="tel"
+        maxlength="10"
+        [(ngModel)]="phone"
+        placeholder="{{ text.mobilePlaceholder }}"
+      />
+    </div>
+
+    <button
+      type="button"
+      class="primary-btn"
+      (click)="sendOtp()"
+    >
+      {{ text.sendOtp }}
+    </button>
+
+    <!-- OTP Section -->
+    <div class="otp-box" *ngIf="otpSent">
+
+      <div class="divider">
+        <span>{{ text.otpTitle }}</span>
+      </div>
+
+      <div class="form-group">
+        <label>{{ text.otpLabel }}</label>
+        <input
+          type="number"
+          maxlength="6"
+          [(ngModel)]="otp"
+          placeholder="••••••"
+        />
+      </div>
+
+      <button
+        type="button"
+        class="primary-btn verify"
+        (click)="verifyOtp()"
+      >
+        {{ text.verifyOtp }}
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
