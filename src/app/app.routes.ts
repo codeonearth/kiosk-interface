@@ -70,6 +70,12 @@ export const routes: Routes = [
           import('./pages/kiosk/municipality/municipality.component')
             .then(m => m.MunicipalityComponent)
     },
+          {
+        path: 'check-status',
+        loadComponent: () => 
+          import('./pages/kiosk/electricity/check-status/check-status.component')
+            .then(m => m.CheckStatusComponent)
+    },
     ]
   },
 ];

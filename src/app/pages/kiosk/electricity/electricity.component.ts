@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ElectricityComponent {
  constructor(private router: Router) {}
- 
+
  selectDepartment(dept: string) {
     console.log('Selected:', dept);
     // later route based on department
@@ -18,6 +18,9 @@ export class ElectricityComponent {
   }
    selectElectricity() {
     this.router.navigate(['/kiosk/electricity']);
+  }
+  checkStatus() {
+    this.router.navigate(['/kiosk/check-status']);
   }
   selectService(service: string) {
     console.log('Electricity service selected:', service);
