@@ -52,6 +52,24 @@ export const routes: Routes = [
           import('./pages/kiosk/electricity/electricity.component')
             .then(m => m.ElectricityComponent)
     },
+     {
+        path: 'water',
+        loadComponent: () => 
+          import('./pages/kiosk/water/water.component')
+            .then(m => m.WaterComponent)
+    },
+      {
+        path: 'gas',
+        loadComponent: () => 
+          import('./pages/kiosk/gas/gas.component')
+            .then(m => m.GasComponent)
+    },
+      {
+        path: 'municipality',
+        loadComponent: () => 
+          import('./pages/kiosk/municipality/municipality.component')
+            .then(m => m.MunicipalityComponent)
+    },
     ]
   },
 ];

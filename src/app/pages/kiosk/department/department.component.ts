@@ -19,4 +19,13 @@ export class DepartmentComponent {
   selectElectricity() {
     this.router.navigate(['/kiosk/electricity']);
   }
+    selectWater() {
+    this.router.navigate(['/kiosk/water']);
+  }
+   selectGas() {
+    this.router.navigate(['/kiosk/gas']);
+  }
+   selectMunicipality() {
+    this.router.navigate(['/kiosk/municipality']);
+  }
 }

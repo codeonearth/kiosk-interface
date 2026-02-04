@@ -2,44 +2,46 @@
 
   <div class="kiosk-card">
 
-    <!-- Header -->
-    <div class="header">
-      <span class="icon">⚡</span>
-      <h1>ELECTRICITY</h1>
-    </div>
+    <!-- Title -->
+    <h1 class="title">⚡ Electricity</h1>
 
-    <!-- Services Grid -->
-    <div class="service-grid">
+    <!-- Department Grid -->
+    <div class="dept-grid">
 
-      <button class="service-card green"
-              (click)="selectService('bill')">
-        BILL DETAIL / PAY BILL
+      <button class="dept-card electricity"
+              (click)="selectElectricity()">
+        <span class="icon">🧾</span>
+        <span class="label">Bill Details / Payment</span>
       </button>
 
-      <button class="service-card red"
-              (click)="selectService('meter')">
-        METER RELATED REQUEST
+      <button class="dept-card water"
+              (click)="selectDepartment('water')">
+        <span class="icon">🔌</span>
+        <span class="label">Meter Related Request</span>
       </button>
 
-      <button class="service-card green"
-              (click)="selectService('new-connection')">
-        NEW CONNECTION
+      <button class="dept-card gas"
+              (click)="selectDepartment('gas')">
+        <span class="icon">🔎</span>
+        <span class="label">New Connection</span>
       </button>
 
-      <button class="service-card green"
-              (click)="selectService('status')">
-        CHECK STATUS
+      <button class="dept-card municipality"
+              (click)="selectDepartment('municipality')">
+        <span class="icon">✔️</span>
+        <span class="label">Check Status</span>
       </button>
 
-      <button class="service-card green"
-              (click)="selectService('complaint')">
-        COMPLAINT
+      <button class="dept-card computer"
+              (click)="selectDepartment('computer')">
+        <span class="icon">❗</span>
+        <span class="label">Complaint</span>
       </button>
 
-      <button class="service-card green"
-              (click)="selectService('appointment')">
-        BOOK APPOINTMENT<br />
-        <span class="small-text">For Update Details</span>
+      <button class="dept-card admin"
+              (click)="selectDepartment('admin')">
+        <span class="icon">✍</span>
+        <span class="label">Book Appointment</span>
       </button>
 
     </div>

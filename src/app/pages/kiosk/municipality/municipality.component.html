@@ -1,1 +1,51 @@
-<p>municipality works!</p>
+<div class="kiosk-wrapper">
+
+  <div class="kiosk-card">
+
+    <!-- Title -->
+    <h1 class="title">⚡ Electricity</h1>
+
+    <!-- Department Grid -->
+    <div class="dept-grid">
+
+      <button class="dept-card electricity"
+              (click)="selectElectricity()">
+        <span class="icon">🧾</span>
+        <span class="label">Bill Details / Payment</span>
+      </button>
+
+      <button class="dept-card water"
+              (click)="selectDepartment('water')">
+        <span class="icon">🔌</span>
+        <span class="label">Meter Related Request</span>
+      </button>
+
+      <button class="dept-card gas"
+              (click)="selectDepartment('gas')">
+        <span class="icon">🔎</span>
+        <span class="label">New Connection</span>
+      </button>
+
+      <button class="dept-card municipality"
+              (click)="selectDepartment('municipality')">
+        <span class="icon">✔️</span>
+        <span class="label">Check Status</span>
+      </button>
+
+      <button class="dept-card computer"
+              (click)="selectDepartment('computer')">
+        <span class="icon">❗</span>
+        <span class="label">Complaint</span>
+      </button>
+
+      <button class="dept-card admin"
+              (click)="selectDepartment('admin')">
+        <span class="icon">✍</span>
+        <span class="label">Book Appointment</span>
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

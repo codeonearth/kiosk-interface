@@ -1,21 +1,193 @@
-/* ===============================
-   Animations
-================================ */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+/* =========================
+   Full Screen Kiosk Wrapper
+========================= */
+.kiosk-wrapper {
+  min-height: 100vh;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* =========================
+   Glass Card Container
+========================= */
+.kiosk-card {
+  width: 100%;
+  max-width: 1150px; /* increased width */
+  padding: 3rem 5.5rem;
+
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.68);
+  backdrop-filter: blur(18px);
+
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  display: flex;
+  flex-direction: column;
+
+  animation: scaleUp 0.6s ease-out;
+}
+
+/* =========================
+   Title
+========================= */
+.title {
+  text-align: center;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 600;
+  margin-bottom: 3.2rem;
+  color: #fff;
+  animation: slideDown 0.7s ease-out;
+}
+
+/* =========================
+   Department Grid
+========================= */
+.dept-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3rem;
+  justify-items: center;
+}
+.computer {
+  background: linear-gradient(135deg, #1e40af, #60a5fa);
+}
+
+.admin {
+  background: linear-gradient(135deg, #374151, #6b7280);
+}
+
+
+/* =========================
+   Department Card
+========================= */
+.dept-card {
+  width: 100%;
+  max-width: 280px;
+  height: 155px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+  /* Entry animation */
+  animation: cardFloat 0.7s ease forwards;
+  opacity: 0;
+}
+
+/* Stagger effect */
+.dept-card:nth-child(1) { animation-delay: 0.1s; }
+.dept-card:nth-child(2) { animation-delay: 0.2s; }
+.dept-card:nth-child(3) { animation-delay: 0.3s; }
+.dept-card:nth-child(4) { animation-delay: 0.4s; }
+
+.dept-card:hover {
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
+}
+
+/* =========================
+   Icon & Label
+========================= */
+.icon {
+  font-size: clamp(2.4rem, 5vw, 3rem);
+}
+
+.label {
+  font-size: clamp(1.05rem, 3vw, 1.15rem);
+  letter-spacing: 1px;
+  opacity: 0.95;
+}
+
+/* =========================
+   Themes
+========================= */
+.electricity {
+  background: linear-gradient(135deg, #166534, #22c55e);
+}
+
+.water {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+}
+
+.gas {
+  background: linear-gradient(135deg, #7c2d12, #ef4444);
+}
+
+.municipality {
+  background: linear-gradient(135deg, #1f2933, #374151);
+}
+
+/* =========================
+   Tablet
+========================= */
+@media (max-width: 1024px) {
+  .kiosk-card {
+    padding: 3rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .dept-grid {
+    gap: 2.2rem;
   }
 }
 
-@keyframes scaleIn {
+/* =========================
+   Mobile
+========================= */
+@media (max-width: 768px) {
+  .kiosk-card {
+    padding: 2.2rem;
+  }
+
+  .dept-grid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .dept-card {
+    height: 135px;
+  }
+}
+
+/* =========================
+   Small Phones
+========================= */
+@media (max-width: 480px) {
+  .kiosk-card {
+    padding: 1.6rem;
+  }
+
+  .dept-card {
+    height: 120px;
+  }
+}
+
+/* =========================
+   Animations
+========================= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleUp {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.96);
   }
   to {
     opacity: 1;
@@ -23,201 +195,24 @@
   }
 }
 
-/* ===============================
-   Full Screen Wrapper
-================================ */
-.kiosk-wrapper {
-  min-height: 100vh;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  animation: fadeInUp 0.8s ease-out both;
-}
-
-/* ===============================
-   Main Kiosk Card
-================================ */
-.kiosk-card {
-  width: 92%;
-  max-width: 1000px;
-
-  padding: 3rem 4.5rem;
-  border-radius: 22px;
-
-   background: rgba(15, 23, 42, 0.65);
-
-  backdrop-filter: blur(18px) saturate(130%);
- box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-
-  border: 1px solid rgba(255, 255, 255, 0.12);
-
-  display: flex;
-  flex-direction: column;
-
-  animation: scaleIn 0.6s ease-out both;
-}
-
-/* ===============================
-   Header
-================================ */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 3.2rem;
-  color: #fff;
-  text-align: center;
-
-  animation: fadeInUp 0.9s ease-out both;
-}
-
-.header h1 {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  font-weight: 700;
-  letter-spacing: 1.5px;
-}
-
-.header .icon {
-  font-size: clamp(2rem, 3vw, 2.6rem);
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
-}
-
-/* ===============================
-   Service Grid
-================================ */
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2.4rem 2.8rem;
-}
-
-/* ===============================
-   Service Buttons
-================================ */
-.service-card {
-  min-height: 120px;
-  padding: 1rem;
-
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  text-align: center;
-
-  color: #fff;
-  cursor: pointer;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-
-  background: rgba(255, 255, 255, 0.08);
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    0 12px 28px rgba(0, 0, 0, 0.4);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    filter 0.25s ease;
-
-  animation: fadeInUp 0.6s ease-out both;
-}
-
-/* Staggered entrance */
-.service-card:nth-child(1) { animation-delay: 0.15s; }
-.service-card:nth-child(2) { animation-delay: 0.25s; }
-.service-card:nth-child(3) { animation-delay: 0.35s; }
-.service-card:nth-child(4) { animation-delay: 0.45s; }
-.service-card:nth-child(5) { animation-delay: 0.55s; }
-.service-card:nth-child(6) { animation-delay: 0.65s; }
-
-.service-card:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
-}
-
-.service-card:active {
-  transform: scale(0.96);
-  filter: brightness(0.95);
-}
-
-/* ===============================
-   Color Variants
-================================ */
-.green {
-  background: linear-gradient(135deg, #14532d, #22c55e);
-}
-
-.red {
-  background: linear-gradient(135deg, #7f1d1d, #ef4444);
-}
-
-/* ===============================
-   Small Helper Text
-================================ */
-.small-text {
-  font-size: 0.78rem;
-  font-weight: 400;
-  opacity: 0.85;
-  text-transform: none;
-}
-
-/* ===============================
-   Tablet
-================================ */
-@media (max-width: 1024px) {
-  .kiosk-card {
-    padding: 2.5rem 3rem;
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
   }
-
-  .service-grid {
-    grid-template-columns: repeat(2, 1fr);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* ===============================
-   Mobile
-================================ */
-@media (max-width: 768px) {
-  .kiosk-card {
-    padding: 2rem;
+@keyframes cardFloat {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
   }
-
-  .service-grid {
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
-  }
-
-  .service-card {
-    min-height: 95px;
-    font-size: 0.9rem;
-  }
-}
-
-/* ===============================
-   Small Phones
-================================ */
-@media (max-width: 480px) {
-  .kiosk-card {
-    padding: 1.5rem;
-  }
-
-  .header {
-    margin-bottom: 2rem;
-  }
-
-  .service-card {
-    min-height: 88px;
-    font-size: 0.85rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

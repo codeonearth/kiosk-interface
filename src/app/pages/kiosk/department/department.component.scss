@@ -1,79 +1,113 @@
-/* Full screen kiosk background */
+/* =========================
+   Full Screen Kiosk Wrapper
+========================= */
 .kiosk-wrapper {
-  height: 100vh;
+  min-height: 100vh;
+  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Glass card */ 
+/* =========================
+   Glass Card Container
+========================= */
 .kiosk-card {
-  width: 90%;
-  max-width: 1000px;
-  padding: 2.5rem 10rem;
-  border-radius: 20px;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
+  width: 100%;
+  max-width: 1150px; /* increased width */
+  padding: 3rem 5.5rem;
+
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.68);
+  backdrop-filter: blur(18px);
+
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  display: flex;
   flex-direction: column;
+
+  animation: scaleUp 0.6s ease-out;
 }
 
-
-/* Title */
+/* =========================
+   Title
+========================= */
 .title {
   text-align: center;
-  font-size: 2.8rem;
+  font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 600;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3.2rem;
   color: #fff;
+  animation: slideDown 0.7s ease-out;
 }
 
-/* Grid layout */
+/* =========================
+   Department Grid
+========================= */
 .dept-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 3rem;
-  justify-content: center;
-  align-items: center;
+  justify-items: center;
 }
 
-/* Card base */
+/* =========================
+   Department Card
+========================= */
 .dept-card {
-  height: 150px;
-  width: 270px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.06);
+  width: 100%;
+  max-width: 280px;
+  height: 155px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+
+  background: rgba(255, 255, 255, 0.08);
   color: #fff;
   cursor: pointer;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
-  transition: all 0.3s ease;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+  /* Entry animation */
+  animation: cardFloat 0.7s ease forwards;
+  opacity: 0;
 }
+
+/* Stagger effect */
+.dept-card:nth-child(1) { animation-delay: 0.1s; }
+.dept-card:nth-child(2) { animation-delay: 0.2s; }
+.dept-card:nth-child(3) { animation-delay: 0.3s; }
+.dept-card:nth-child(4) { animation-delay: 0.4s; }
 
 .dept-card:hover {
-  transform: scale(1.06);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
 }
 
-/* Icon */
+/* =========================
+   Icon & Label
+========================= */
 .icon {
-  font-size: 2.8rem;
+  font-size: clamp(2.4rem, 5vw, 3rem);
 }
 
-/* Label */
 .label {
-  font-size: 1.1rem;
+  font-size: clamp(1.05rem, 3vw, 1.15rem);
   letter-spacing: 1px;
   opacity: 0.95;
 }
 
-/* Individual themes */
+/* =========================
+   Themes
+========================= */
 .electricity {
   background: linear-gradient(135deg, #166534, #22c55e);
 }
@@ -90,17 +124,87 @@
   background: linear-gradient(135deg, #1f2933, #374151);
 }
 
-/* Responsive */
+/* =========================
+   Tablet
+========================= */
+@media (max-width: 1024px) {
+  .kiosk-card {
+    padding: 3rem;
+  }
+
+  .dept-grid {
+    gap: 2.2rem;
+  }
+}
+
+/* =========================
+   Mobile
+========================= */
 @media (max-width: 768px) {
+  .kiosk-card {
+    padding: 2.2rem;
+  }
+
   .dept-grid {
     grid-template-columns: 1fr;
+    gap: 1.8rem;
   }
 
   .dept-card {
     height: 135px;
   }
+}
 
-  .title {
-    font-size: 2.2rem;
+/* =========================
+   Small Phones
+========================= */
+@media (max-width: 480px) {
+  .kiosk-card {
+    padding: 1.6rem;
+  }
+
+  .dept-card {
+    height: 120px;
+  }
+}
+
+/* =========================
+   Animations
+========================= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFloat {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
