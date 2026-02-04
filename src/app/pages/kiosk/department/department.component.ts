@@ -16,4 +16,7 @@ export class DepartmentComponent {
     // later route based on department
     // this.router.navigate(['/kiosk/service', dept]);
   }
+  selectElectricity() {
+    this.router.navigate(['/kiosk/electricity']);
+  }
 }

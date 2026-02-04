@@ -46,6 +46,12 @@ export const routes: Routes = [
           import('./pages/kiosk/department/department.component')
             .then(m => m.DepartmentComponent)
     },
+    {
+        path: 'electricity',
+        loadComponent: () => 
+          import('./pages/kiosk/electricity/electricity.component')
+            .then(m => m.ElectricityComponent)
+    },
     ]
   },
 ];

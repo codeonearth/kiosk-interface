@@ -1,0 +1,49 @@
+<div class="kiosk-wrapper">
+
+  <div class="kiosk-card">
+
+    <!-- Header -->
+    <div class="header">
+      <span class="icon">⚡</span>
+      <h1>ELECTRICITY</h1>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="service-grid">
+
+      <button class="service-card green"
+              (click)="selectService('bill')">
+        BILL DETAIL / PAY BILL
+      </button>
+
+      <button class="service-card red"
+              (click)="selectService('meter')">
+        METER RELATED REQUEST
+      </button>
+
+      <button class="service-card green"
+              (click)="selectService('new-connection')">
+        NEW CONNECTION
+      </button>
+
+      <button class="service-card green"
+              (click)="selectService('status')">
+        CHECK STATUS
+      </button>
+
+      <button class="service-card green"
+              (click)="selectService('complaint')">
+        COMPLAINT
+      </button>
+
+      <button class="service-card green"
+              (click)="selectService('appointment')">
+        BOOK APPOINTMENT<br />
+        <span class="small-text">For Update Details</span>
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
