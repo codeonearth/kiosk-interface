@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KioskLocationComponentComponent } from './kiosk-location-component.component';
+import { KioskLocationParentComponent } from './kiosk-location-component.component';
 
 describe('KioskLocationComponentComponent', () => {
   let component: KioskLocationComponentComponent;
