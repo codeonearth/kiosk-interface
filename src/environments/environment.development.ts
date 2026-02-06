@@ -1,3 +1,3 @@
 export const environment = {
-    API_URL:'https://localhost/api'
+    API_URL:'https://localhost:7000/api/kiosk/'
 };

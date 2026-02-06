@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 
-export type LayoutType = 'admin' | 'kiosk' | 'public';
+export type LayoutType = 'kiosk' | 'public';
 
 @Injectable({
   providedIn: 'root'
