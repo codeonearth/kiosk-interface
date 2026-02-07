@@ -13,16 +13,18 @@ export class KioskService {
   
   
   isKioskActive(ipAddress:any):Observable<boolean> {
-    console.log('Checking kiosk active status for IP:', ipAddress);
     return this.http.get<boolean>(environment.API_URL + GlobalConstant.API_END_POINTS.KIOSK.CHECK_KIOSK_ACTIVE,{
       params:{ encryptedKioskIP: ipAddress }  
     });
 
-    
-
-    // return true;
   }
-  
+
+
+  getPageData(pageKey: string): Observable<any> {
+      return this.http.get<any>(environment.API_URL + GlobalConstant.API_END_POINTS.KIOSK.GET_PAGE_DATA,{
+      params:{ pageKey: pageKey }  
+    });
+  }
 
 }
 

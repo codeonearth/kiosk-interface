@@ -1,0 +1,22 @@
+<ng-container [ngSwitch]="type">
+  <p 
+    *ngSwitchCase="'paragraph'" 
+    [class]="getClasses()"
+  >
+    {{ content }}
+  </p>
+  
+  <h1 
+    *ngSwitchCase="'heading'" 
+    [class]="getClasses()"
+  >
+    {{ content }}
+  </h1>
+  
+  <span 
+    *ngSwitchCase="'label'" 
+    [class]="getClasses()"
+  >
+    {{ content }}
+  </span>
+</ng-container>

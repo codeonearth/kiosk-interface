@@ -11,7 +11,7 @@ export class EncryptionService {
 
   constructor() {
     // In production, get these from secure configuration
-    this.secretKey = 'A9f3K2mP7R8X4L6Z0C1D5E9H2WQYBTJ';
+    this.secretKey = 'A9f3K2mP7R8X4L6Z0C1D5E9H2WQYBTJX';
     this.iv = 'F7K9M2P4R8X3L6Z0';
   }
 
