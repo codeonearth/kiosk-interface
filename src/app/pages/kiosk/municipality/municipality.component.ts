@@ -11,7 +11,6 @@ export class MunicipalityComponent {
 constructor(private router: Router) {}
  
  selectDepartment(dept: string) {
-    console.log('Selected:', dept);
     // later route based on department
     // this.router.navigate(['/kiosk/service', dept]);
   }
@@ -19,7 +18,6 @@ constructor(private router: Router) {}
     this.router.navigate(['/kiosk/electricity']);
   }
   selectService(service: string) {
-    console.log('Electricity service selected:', service);
     // later → route based on service
     // this.router.navigate(['/kiosk/electricity', service]);
   }

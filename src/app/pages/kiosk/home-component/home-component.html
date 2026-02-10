@@ -17,7 +17,7 @@
     </div>
 
 
-</div> -->
+</div> --> 
 
 
 <div class="kiosk-container" *ngIf="data">
@@ -31,22 +31,15 @@
             {{ comp.text['text'] }}
          </p>
 
-        <div *ngIf="comp.type === 'button'" class="language-buttons">
-
-            <button class="lang-card english"
-                    (click)="selectLanguage('en')">
-                <span class="flag">🇬🇧</span>
-                <span class="text">English</span>
-            </button>
-
-            <button class="lang-card hindi"
-                    (click)="selectLanguage('hi')">
-                <span class="flag">🇮🇳</span>
-                <span class="text">हिन्दी</span>
-            </button>
-
+        <div *ngIf="comp.type === 'button' && comp.order === 3" class="language-buttons">
+            <div *ngFor="let lang of languageData">
+               <button class="lang-card {{ lang.config }}"
+                    (click)="selectLanguage(lang.languageCode)">
+                    <span class="flag">{{ lang.langFlag }}</span>
+                    <span class="text">{{ lang.languageText }}</span>
+                </button>
+            </div>
         </div>
-
     </ng-container>
 
 </div>

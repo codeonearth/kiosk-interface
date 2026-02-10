@@ -12,7 +12,6 @@ export const kioskGuard: CanActivateFn = () => {
   const ipCapture = inject(IPCaptureService);
   const encryptionService = inject(EncryptionService);
   const router = inject(Router);
-console.log('KioskGuard: Checking if kiosk is active...');
  return from(ipCapture.getIPAddress()).pipe(
   switchMap(ipInfo => {
     const encryptedIp = encryptionService.encryptData(ipInfo.ip);

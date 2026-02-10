@@ -17,7 +17,6 @@ export class EncryptionService {
 
   // Encrypt data before sending to backend
   encryptData(data: any): string {
-    console.log('Encrypting data:', data);
     try {
       const jsonString = JSON.stringify(data);
       
@@ -41,24 +40,31 @@ export class EncryptionService {
 
   // Decrypt data received from backend
   decryptData(cipherText: string): any {
-    try {
-      const decrypted = CryptoJS.AES.decrypt(
-        cipherText,
-        CryptoJS.enc.Utf8.parse(this.secretKey),
-        {
-          iv: CryptoJS.enc.Utf8.parse(this.iv),
-          mode: CryptoJS.mode.CBC,
-          padding: CryptoJS.pad.Pkcs7
-        }
-      );
-      
-      const decryptedText = decrypted.toString(CryptoJS.enc.Utf8);
-      return JSON.parse(decryptedText);
-    } catch (error) {
-      console.error('Decryption error:', error);
-      throw error;
-    }
+
+  if (!cipherText || cipherText.length < 20) {
+    throw new Error('Invalid encrypted payload');
   }
+
+  const decrypted = CryptoJS.AES.decrypt(
+    cipherText,
+    CryptoJS.enc.Utf8.parse(this.secretKey),
+    {
+      iv: CryptoJS.enc.Utf8.parse(this.iv),
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+    }
+  );
+
+  const text = decrypted.toString(CryptoJS.enc.Utf8);
+
+  if (!text) {
+    throw new Error('Decryption produced empty string');
+  }
+
+  return JSON.parse(text);
+}
+
+
 
   // Generate a unique kiosk ID
   generateKioskId(): string {

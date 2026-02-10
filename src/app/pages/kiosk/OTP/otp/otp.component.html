@@ -1,15 +1,15 @@
-<div class="kiosk-wrapper">
+<!-- <div class="kiosk-wrapper">
 
-  <!-- Glass Card -->
+
   <div class="kiosk-card">
 
-    <!-- Header -->
+
     <div class="header">
       <h1>{{ text.title }}</h1>
       <p>{{ text.subtitle }}</p>
     </div>
 
-    <!-- Phone Input -->
+
     <div class="form-group">
       <label>{{ text.mobileLabel }}</label>
       <input
@@ -28,7 +28,6 @@
       {{ text.sendOtp }}
     </button>
 
-    <!-- OTP Section -->
     <div class="otp-box" *ngIf="otpSent">
 
       <div class="divider">
@@ -57,4 +56,58 @@
 
   </div>
 
+</div>
+ -->
+
+
+<div class="kiosk-wrapper" *ngIf="data">
+  <div class="kiosk-card">
+    <ng-container *ngFor="let comp of data?.components">
+    <div class="header">
+      <h1 *ngIf="comp.type === 'text' && comp.order === 1">
+            {{ comp.text['text'] }}
+        </h1>
+         <p *ngIf="comp.type === 'text' && comp.order === 2">
+            {{ comp.text['text'] }}
+         </p>
+    </div>
+    <div class="form-group">
+      <label *ngIf="comp.type === 'input' && comp.order === 3">{{ comp.config['label'] }}</label>
+      <input *ngIf="comp.type === 'input' && comp.order === 3"
+          type="{{ comp.type }}"
+          maxlength="{{ comp.config['maxLength'] }}"
+          [(ngModel)]="phone"
+          placeholder="{{ comp.config['placeholder'] }}"
+        />
+    </div>
+     <button *ngIf="comp.type === 'button' && comp.order === 4"
+        type="{{ comp.type }}"
+        class="primary-btn"
+        (click)="sendOtp()"
+      >
+        {{ comp.text['text'] }}
+      </button>
+      <div class="otp-box" *ngIf="otpSent">
+        <div class="divider" *ngIf="comp.type === 'input' && comp.order === 5" >
+          <span>{{ comp.config['label'] }}</span>
+        </div>
+        <div class="form-group" *ngIf="comp.type === 'input' && comp.order === 5">
+          <label>{{ comp.text['input'] }}</label>
+          <input
+            type="text"
+            maxlength="{{ comp.config['maxLength'] }}"
+            [(ngModel)]="otp"
+            placeholder="••••••"
+          />
+        </div>
+        <button *ngIf="comp.type === 'button' && comp.order === 6"
+          type="{{ comp.type }}"
+          class="primary-btn verify"
+          (click)="verifyOtp()"
+        >
+          {{ comp.text['text'] }}
+        </button> 
+      </div>
+    </ng-container>
+  </div>
 </div>

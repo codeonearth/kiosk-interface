@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { KioskService } from '../../../core/services/kiosk/kioskService';
 
 @Component({
   selector: 'app-electricity',
@@ -8,23 +9,29 @@ import { Router } from '@angular/router';
   templateUrl: './electricity.component.html',
   styleUrl: './electricity.component.scss'
 })
-export class ElectricityComponent {
- constructor(private router: Router) {}
+export class ElectricityComponent implements OnInit {
+ constructor(private router: Router, private _kioskservice: KioskService) {}
 
- selectDepartment(dept: string) {
-    console.log('Selected:', dept);
-    // later route based on department
-    // this.router.navigate(['/kiosk/service', dept]);
+  pageData : any;
+
+
+  ngOnInit(): void {
+
+    this.pageData = this._kioskservice.getPageData('electricity-services').subscribe(data => {
+      this.pageData = data;
+    });
+
+
   }
-   selectElectricity() {
-    this.router.navigate(['/kiosk/electricity']);
+
+
+ selectElectricityService(service: any) {
+    
+
+    
   }
-  checkStatus() {
-    this.router.navigate(['/kiosk/check-status']);
-  }
-  selectService(service: string) {
-    console.log('Electricity service selected:', service);
-    // later → route based on service
-    // this.router.navigate(['/kiosk/electricity', service]);
-  }
+  
+
+
+
 }

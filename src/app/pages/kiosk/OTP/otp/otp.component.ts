@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { KioskService } from '../../../../core/services/kiosk/kioskService';
 
 @Component({
   selector: 'app-otp',
@@ -21,9 +22,16 @@ lang: 'en' | 'hi' = 'en';
 
   text: any = {};
 
-  constructor(private route: ActivatedRoute , private router: Router) {}
+  data: any;
+
+  constructor(private route: ActivatedRoute , private router: Router, private _kioskservice: KioskService) {}
 
   ngOnInit() {
+
+    this.data = this._kioskservice.getPageData('otp').subscribe(x => {
+      this.data = x;
+    });
+
     this.route.queryParams.subscribe(params => {
       this.lang = params['lang'] === 'hi' ? 'hi' : 'en';
       this.loadText();

@@ -9,6 +9,5 @@ import { Component, OnInit } from '@angular/core';
 export class KioskLocationComponentComponent  {
   onStart() {
     // Navigate to next screen (language / location)
-    console.log('Start pressed');
   }
 }
