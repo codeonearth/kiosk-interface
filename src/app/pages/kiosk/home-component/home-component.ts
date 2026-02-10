@@ -31,11 +31,9 @@ export class HomeComponent {
       this.languageData = x;
     });
 
-=======
     // this.data = this._kioskservice.getPageData('home').subscribe(x => {
     //   this.data = x;
     // });
->>>>>>> d11d738ac1e797806855398bf78ca7fbc48605ba
   }
 
   selectLanguage(lang: 'en' | 'hi') {
