@@ -14,11 +14,13 @@ constructor(private router: Router) {}
     // later route based on department
     // this.router.navigate(['/kiosk/service', dept]);
   }
-   selectElectricity() {
-    this.router.navigate(['/kiosk/electricity']);
+   GasPay() {
+    this.router.navigate(['/kiosk/Pay-gas-bill']);
   }
   selectService(service: string) {
+
+    console.log('Gas service selected:', service);
     // later → route based on service
-    // this.router.navigate(['/kiosk/electricity', service]);
+    // this.router.navigate(['/kiosk/gas', service]);
   }
 }

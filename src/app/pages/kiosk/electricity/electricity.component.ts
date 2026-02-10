@@ -23,12 +23,28 @@ export class ElectricityComponent implements OnInit {
 
 
   }
+<<<<<<< HEAD
 
 
  selectElectricityService(service: any) {
     
 
     
+=======
+   selectElectricity() {
+    this.router.navigate(['/kiosk/electricity']);
+  }
+  checkStatus() {
+    this.router.navigate(['/kiosk/check-status']);
+  }
+  payBill() {
+    this.router.navigate(['/kiosk/electricity/pay-bill']);
+  }
+  selectService(service: string) {
+    console.log('Electricity service selected:', service);
+    // later → route based on service
+    // this.router.navigate(['/kiosk/electricity', service]);
+>>>>>>> d11d738ac1e797806855398bf78ca7fbc48605ba
   }
   
 

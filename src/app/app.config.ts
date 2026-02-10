@@ -8,6 +8,7 @@ import { encryptInterceptor } from './core/incterceptor/encrypt.interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [
     // provideBrowserGlobalErrorListeners(),
+<<<<<<< HEAD
     provideRouter(routes),
     provideHttpClient(withInterceptors([encryptInterceptor]))
   ]

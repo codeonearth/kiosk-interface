@@ -1,0 +1,125 @@
+<div class="kiosk-wrapper">
+  <div class="kiosk-card">
+
+    <h1 class="title">
+        Pay Water Bill
+    </h1>
+
+
+    <!-- STEP 1 : STATE -->
+    <div *ngIf="step >= 1 " class="form-group">
+      <label>Water Board</label>
+      <select [(ngModel)]="selectboard" (change)="onStateChange()">
+        <option value="">Select Boards</option>
+        <option *ngFor="let state of boards" [value]="state">
+          {{ state }}
+        </option>
+      </select>
+    </div>
+
+    <!-- STEP 2 : BOARD -->
+    <div *ngIf="step >= 2" class="form-group">
+      <label>Water Service</label>
+      <select [(ngModel)]="selectedServiceId"
+              (change)="onBoardChange()">
+        <option [ngValue]="null">Select Service</option>
+        <option *ngFor="let s of wService"
+                [ngValue]="s.id">
+          {{ s.serviceType }}
+        </option>
+      </select>
+    <!-- </div> -->
+
+<!-- STEP 3 : DYNAMIC INPUTS -->
+<!-- <div *ngIf="step >= 3 && selectService"> -->
+
+  <!-- DISTRICT / TYPE -->
+  <!-- <div *ngIf="selectedBoard.districtOrType" class="form-group">
+    <label>District / Type</label>
+    <select [(ngModel)]="selectedDistrictOrType">
+      <option value="">Select</option>
+      <option [value]="selectedBoard.districtOrType">
+        {{ selectedBoard.districtOrType }}
+      </option>
+    </select>
+  </div> -->
+
+    <!-- STEP 3 : DYNAMIC INPUTS -->
+    <div *ngIf="step >= 2 && selectService">
+
+      
+
+      <div *ngIf="selectService?.consumerId" class="form-group">
+        <label>Consumer ID</label>
+        <input type="text" [(ngModel)]="consumerId" placeholder="Enter Consumer ID">
+      </div>
+
+      <div *ngIf="selectService?.rrNumber" class="form-group">
+        <label>RR Number</label>
+        <input type="text" [(ngModel)]="rrNumber" placeholder="Enter RR Number">
+      </div>
+
+      <div *ngIf="selectService?.accountNo" class="form-group">
+        <label>Account No</label>
+        <input type="text" [(ngModel)]="accountNo" placeholder="Enter Account No">
+      </div>
+
+      <div *ngIf="selectService?.billNumber" class="form-group">
+        <label>Bill Number</label>
+        <input type="text" [(ngModel)]="billNumber" placeholder="Enter Bill Number">
+      </div>
+        
+
+      <div *ngIf="selectService?.mobileNo" class="form-group">
+        <label>Mobile No</label>
+        <input type="text" [(ngModel)]="mobileNo" placeholder="Enter Mobile No">
+      </div>
+
+      <div *ngIf="selectService?.sequenceNo" class="form-group">
+        <label>Sequence No</label>
+        <input type="text" [(ngModel)]="sequenceNo" placeholder="Enter Sequence No">
+      </div>
+
+      <div *ngIf="selectService?.connectionNo" class="form-group">
+        <label>Connection No</label>
+        <input type="text" [(ngModel)]="connectionNo" placeholder="Enter Connection No">
+      </div>
+
+      <div *ngIf="selectService?.applicationNo" class="form-group">
+        <label>Application No</label>
+        <input type="text" [(ngModel)]="applicationNo" placeholder="Enter Application No">
+      </div>
+
+      <div *ngIf="selectService?.customerId" class="form-group">
+        <label>Customer Id</label>
+        <input type="text" [(ngModel)]="customerId" placeholder="Enter Customer Id">
+      </div>
+
+      <div *ngIf="selectService?.kNumber" class="form-group">
+        <label>K Number</label>
+        <input type="text" [(ngModel)]="kNumber" placeholder="Enter K Number">
+      </div>
+
+      <div *ngIf="selectService?.waterTaxNo" class="form-group">
+        <label>Water Tax No</label>
+        <input type="text" [(ngModel)]="waterTaxNo" placeholder="Enter Water Tax No">
+      </div>
+
+      <div *ngIf="selectService?.tapNo" class="form-group">
+        <label>Tap No</label>
+        <input type="text" [(ngModel)]="tapNo" placeholder="Enter Tap No">
+      </div>
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="proceed-btn" (click)="nextStep()">
+      {{ step < 2 ? 'Next' : 'Proceed' }}
+    </button>
+
+    <div class="note">
+      By continuing, you allow bill fetch & reminder service.
+    </div>
+
+  </div>
+</div>
