@@ -1,1 +1,108 @@
-<p>pay-bill works!</p>
+<div class="kiosk-wrapper">
+  <div class="kiosk-card">
+
+    <h1 class="title">
+      {{ isApartment ? 'Pay Apartment Bills' : 'Pay Electricity Bill' }}
+    </h1>
+
+    <!-- TYPE SELECT -->
+    <div class="radio-group">
+      <label>
+        <input type="radio"
+               name="type"
+               [checked]="!isApartment"
+               (change)="selectType(false)">
+        Electricity Boards
+      </label>
+
+      <label>
+        <input type="radio"
+               name="type"
+               [checked]="isApartment"
+               (change)="selectType(true)">
+        Apartments
+      </label>
+    </div>
+
+    <!-- STEP 1 : STATE -->
+    <div *ngIf="step >= 1 && !isApartment" class="form-group">
+      <label>State</label>
+      <select [(ngModel)]="selectedState" (change)="onStateChange()">
+        <option value="">Select State</option>
+        <option *ngFor="let state of states" [value]="state">
+          {{ state }}
+        </option>
+      </select>
+    </div>
+
+    <!-- STEP 2 : BOARD -->
+    <div *ngIf="step >= 2 && !isApartment" class="form-group">
+      <label>Electricity Board</label>
+      <select [(ngModel)]="selectedBoardId"
+              (change)="onBoardChange()">
+        <option [ngValue]="null">Select Board</option>
+        <option *ngFor="let board of boards"
+                [ngValue]="board.id">
+          {{ board.boardName }}
+        </option>
+      </select>
+    </div>
+
+<!-- STEP 3 : DYNAMIC INPUTS -->
+<div *ngIf="step >= 3 && selectedBoard">
+
+  <!-- DISTRICT / TYPE -->
+  <div *ngIf="selectedBoard.districtOrType" class="form-group">
+    <label>District / Type</label>
+    <select [(ngModel)]="selectedDistrictOrType">
+      <option value="">Select</option>
+      <option [value]="selectedBoard.districtOrType">
+        {{ selectedBoard.districtOrType }}
+      </option>
+    </select>
+  </div>
+
+    <!-- STEP 3 : DYNAMIC INPUTS -->
+    <div *ngIf="step >= 3 && selectedBoard">
+
+      <div *ngIf="selectedBoard.consumerNumber" class="form-group">
+        <label>Consumer Number</label>
+        <input type="text"
+               [(ngModel)]="consumerNumber"
+               placeholder="Enter Consumer Number">
+      </div>
+
+      <div *ngIf="selectedBoard.serviceNumber" class="form-group">
+        <label>Service Number</label>
+        <input type="text"
+               [(ngModel)]="serviceNumber"
+               placeholder="Enter Service Number">
+      </div>
+
+      <div *ngIf="selectedBoard.connectionNumber" class="form-group">
+        <label>Connection Number</label>
+        <input type="text"
+               [(ngModel)]="connectionNumber"
+               placeholder="Enter Connection Number">
+      </div>
+
+      <div *ngIf="selectedBoard.tenantNumber" class="form-group">
+        <label>Tenant Number</label>
+        <input type="text"
+               [(ngModel)]="tenantNumber"
+               placeholder="Enter Tenant Number">
+      </div>
+
+    </div>
+
+    <!-- BUTTON -->
+    <button class="proceed-btn" (click)="nextStep()">
+      {{ step < 3 ? 'Next' : 'Proceed' }}
+    </button>
+
+    <div class="note">
+      By continuing, you allow bill fetch & reminder service.
+    </div>
+
+  </div>
+</div>

@@ -22,6 +22,9 @@ export class ElectricityComponent {
   checkStatus() {
     this.router.navigate(['/kiosk/check-status']);
   }
+  payBill() {
+    this.router.navigate(['/kiosk/electricity/pay-bill']);
+  }
   selectService(service: string) {
     console.log('Electricity service selected:', service);
     // later → route based on service

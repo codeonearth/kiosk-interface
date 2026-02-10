@@ -1,0 +1,122 @@
+<div class="kiosk-wrapper">
+  <div class="kiosk-card">
+
+    <h1 class="title">Pay Gas Bill</h1>
+
+    <!-- ================= STEP 1 : PROVIDER ================= -->
+    <div *ngIf="step >= 1" class="form-group">
+      <label>Piped Gas Provider</label>
+      <select [(ngModel)]="selectedProvider"
+              (change)="onStateChange()">
+        <option value="">Select Provider</option>
+        <option *ngFor="let provider of providers"
+                [value]="provider">
+          {{ provider }}
+        </option>
+      </select>
+    </div>
+
+    <!-- ================= STEP 2 : DISTRICT ================= -->
+    <div *ngIf="step >= 2" class="form-group">
+      <label>District</label>
+      <select [(ngModel)]="selectedDistrictId"
+              (change)="onBoardChange()">
+        <option [ngValue]="null">Select District</option>
+        <option *ngFor="let board of district"
+                [ngValue]="board.id">
+          {{ board.district }}
+        </option>
+      </select>
+    </div>
+
+    <!-- ================= STEP 3 : DYNAMIC INPUTS ================= -->
+    <div *ngIf="step >= 3 && selectedDistrict">
+
+      <!-- Sub District -->
+      <div *ngIf="selectedDistrict.subDistrict" class="form-group">
+        <label>Sub District</label>
+        <select [(ngModel)]="selectedSubDistrict">
+          <option value="">Select</option>
+          <option [value]="selectedDistrict.subDistrict">
+            {{ selectedDistrict.subDistrict }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Business Partner Number -->
+      <div *ngIf="selectedDistrict?.businessPartnerNumber"
+           class="form-group">
+        <label>Business Partner Number</label>
+        <input type="text"
+               [(ngModel)]="businessPartnerNumber"
+               placeholder="Enter Business Partner Number">
+      </div>
+
+      <!-- CA Number -->
+      <div *ngIf="selectedDistrict?.caNumber"
+           class="form-group">
+        <label>CA Number</label>
+        <input type="text"
+               [(ngModel)]="caNumber"
+               placeholder="Enter CA Number">
+      </div>
+
+      <!-- Customer Id -->
+      <div *ngIf="selectedDistrict?.customerId"
+           class="form-group">
+        <label>Customer Id</label>
+        <input type="text"
+               [(ngModel)]="customerId"
+               placeholder="Enter Customer Id">
+      </div>
+
+      <!-- BP Number -->
+      <div *ngIf="selectedDistrict?.bpNumber"
+           class="form-group">
+        <label>BP Number</label>
+        <input type="text"
+               [(ngModel)]="bpNumber"
+               placeholder="Enter BP Number">
+      </div>
+
+      <!-- Customer Number -->
+      <div *ngIf="selectedDistrict?.customerNumber"
+           class="form-group">
+        <label>Customer Number</label>
+        <input type="text"
+               [(ngModel)]="customerNumber"
+               placeholder="Enter Customer Number">
+      </div>
+
+      <!-- CID Number -->
+      <div *ngIf="selectedDistrict?.cidNumber"
+           class="form-group">
+        <label>CID Number</label>
+        <input type="text"
+               [(ngModel)]="cidNumber"
+               placeholder="Enter CID Number">
+      </div>
+
+      <!-- CRN Number -->
+      <div *ngIf="selectedDistrict?.crnNumber"
+           class="form-group">
+        <label>CRN Number</label>
+        <input type="text"
+               [(ngModel)]="crnNumber"
+               placeholder="Enter CRN Number">
+      </div>
+
+    </div>
+
+    <!-- ================= BUTTON ================= -->
+    <button class="proceed-btn"
+            (click)="nextStep()">
+      {{ step < 3 ? 'Next' : 'Proceed' }}
+    </button>
+
+    <div class="note">
+      By continuing, you allow bill fetch & reminder service.
+    </div>
+
+  </div>
+</div>

@@ -70,11 +70,41 @@ export const routes: Routes = [
           import('./pages/kiosk/municipality/municipality.component')
             .then(m => m.MunicipalityComponent)
     },
-          {
+   {
         path: 'check-status',
         loadComponent: () => 
           import('./pages/kiosk/electricity/check-status/check-status.component')
             .then(m => m.CheckStatusComponent)
+    },
+   {
+        path: 'electricity/pay-bill',
+        loadComponent: () => 
+          import('./pages/kiosk/electricity/pay-bill/pay-bill.component')
+            .then(m => m.PayBillComponent)
+    },
+    {
+        path: 'redirect',
+        loadComponent: () => 
+          import('./pages/kiosk/electricity/pay-bill/redirect-page/redirect-page.component')
+            .then(m => m.RedirectPageComponent)
+    },
+    {
+        path: 'bill-receipt',
+        loadComponent: () => 
+          import('./pages/kiosk/electricity/pay-bill/bill-receipt/bill-receipt.component')
+            .then(m => m.BillReceiptComponent)
+    },
+    {
+        path: 'pay-water-bill',
+        loadComponent: () => 
+          import('./pages/kiosk/water/pay-water-bill/pay-water-bill.component')
+            .then(m => m.PayWaterBillComponent)
+    },
+    {
+        path: 'Pay-gas-bill',
+        loadComponent: () => 
+          import('./pages/kiosk/gas/pay-gas-bill/pay-gas-bill.component')
+            .then(m => m.PayGasBillComponent)
     },
     ]
   },

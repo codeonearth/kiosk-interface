@@ -17,9 +17,9 @@ export class HomeComponent {
   data: any;
 
   ngOnInit() {
-    this.data = this._kioskservice.getPageData('home').subscribe(x => {
-      this.data = x;
-    });
+    // this.data = this._kioskservice.getPageData('home').subscribe(x => {
+    //   this.data = x;
+    // });
   }
 
   selectLanguage(lang: 'en' | 'hi') {
