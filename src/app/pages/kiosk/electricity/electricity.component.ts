@@ -19,6 +19,7 @@ export class ElectricityComponent implements OnInit {
 
     this.pageData = this._kioskservice.getPageData('electricity-services').subscribe(data => {
       this.pageData = data;
+      console.log('Electricity page data:', this.pageData);
     });
 
 
@@ -26,6 +27,7 @@ export class ElectricityComponent implements OnInit {
 
  selectElectricityService(service: any) {
     
+  this.router.navigate([service]);
 
     
 

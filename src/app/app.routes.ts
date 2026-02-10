@@ -77,7 +77,7 @@ export const routes: Routes = [
             .then(m => m.CheckStatusComponent)
     },
    {
-        path: 'electricity/pay-bill',
+        path: 'electricity/paybill',
         loadComponent: () => 
           import('./pages/kiosk/electricity/pay-bill/pay-bill.component')
             .then(m => m.PayBillComponent)

@@ -10,7 +10,7 @@
     <div class="dept-grid">
       <ng-container *ngFor="let comp of pageData?.components">
           <button class="dept-card {{comp.config['class']}}" 
-              (click)="selectElectricityService(comp)" *ngIf="comp.type === 'button'">
+              (click)="selectElectricityService(comp.config['route'])" *ngIf="comp.type === 'button'">
             <span class="icon">{{ comp.config['icon'] }}</span>
             <span class="label">{{ comp.text['text'] }}</span>
           </button>
