@@ -19,8 +19,18 @@ constructor(private router: Router) {}
   }
   selectService(service: string) {
 
+
     console.log('Gas service selected:', service);
-    // later → route based on service
-    // this.router.navigate(['/kiosk/gas', service]);
+    // --- Add these two functions ---
+  }
+  goBack() {
+    this.router.navigate(['kiosk/department']);
+  }
+
+  goHome() {
+    this.router.navigate(['kiosk/home']);
   }
 }
+    // later → route based on service
+    // this.router.navigate(['/kiosk/gas', service]);
+  

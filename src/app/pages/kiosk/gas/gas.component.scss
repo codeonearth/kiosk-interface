@@ -131,6 +131,76 @@
 .municipality {
   background: linear-gradient(135deg, #1f2933, #374151);
 }
+/* Container outside the palette */
+.footer-actions {
+  display: flex;
+  justify-content: center; 
+  gap: 15rem;              /* Adjust this to align under the grid gaps */
+  margin-top: 2.5rem;      /* Space below the main palette */
+  width: 100%;
+}
+
+/* Small navigation buttons with matching styles */
+.nav-btn-small {
+  width: 140px;            /* Keeps them smaller as requested */
+  height: 55px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22); /* Same border as main cards */
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Adds depth outside the palette */
+}
+
+/* Back Button: Matches Check Status theme */
+.back-btn {
+  background: linear-gradient(135deg, #1f2933, #374151);
+}
+
+/* Home Button: Matches Meter Request/Blue theme */
+.home-btn {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+}
+
+.nav-btn-small:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-btn-small .label {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+/* This ensures the Card and Buttons are one above the other */
+.kiosk-wrapper {
+  display: flex;
+  flex-direction: column;    /* Forces vertical stacking: Card on top, Buttons below */
+  align-items: center;       /* Centers the Card and the Buttons container horizontally */
+  justify-content: center;   /* Centers the whole group vertically on the screen */
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* This keeps the dark palette centered */
+.kiosk-card {
+  width: 100%;
+  max-width: 1000px;         /* Keeps the palette from stretching too wide */
+  margin: 0 auto;            /* Standard centering technique */
+}
+
+/* This handles the buttons below the palette */
+.footer-actions {
+  display: flex;
+  justify-content: center;   /* Centers the two buttons as a pair */
+  gap: 15rem;                /* Space between Back and Home */
+  margin-top: 3rem;          /* Vertical gap between the dark tile and buttons */
+  width: 100%;
+}
 
 /* =========================
    Tablet

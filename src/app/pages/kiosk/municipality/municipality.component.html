@@ -11,41 +11,46 @@
       <button class="dept-card electricity"
               (click)="selectElectricity()">
         <span class="icon">🧾</span>
-        <span class="label">Bill Details / Payment</span>
+        <span class="label">Pay House Tax</span>
       </button>
 
       <button class="dept-card water"
               (click)="selectDepartment('water')">
-        <span class="icon">🔌</span>
-        <span class="label">Meter Related Request</span>
-      </button>
-
-      <button class="dept-card gas"
-              (click)="selectDepartment('gas')">
-        <span class="icon">🔎</span>
-        <span class="label">New Connection</span>
-      </button>
-
-      <button class="dept-card municipality"
-              (click)="selectDepartment('municipality')">
         <span class="icon">✔️</span>
         <span class="label">Check Status</span>
       </button>
 
-      <button class="dept-card computer"
-              (click)="selectDepartment('computer')">
+      <button class="dept-card gas"
+              (click)="selectDepartment('gas')">
         <span class="icon">❗</span>
         <span class="label">Complaint</span>
       </button>
 
-      <button class="dept-card admin"
-              (click)="selectDepartment('admin')">
-        <span class="icon">✍</span>
-        <span class="label">Book Appointment</span>
+      <button class="dept-card municipality"
+              (click)="selectDepartment('municipality')">
+        <span class="icon">👶</span>
+        <span class="label">Apply Birth Certificate</span>
       </button>
 
+      <button class="dept-card computer"
+              (click)="selectDepartment('computer')">
+        <span class="icon">📜</span>
+        <span class="label">Apply Death Certificate</span>
+      </button>
+
+      
+
+  
+ </div> </div> <div class="footer-actions">
+     <button class="nav-btn-small back-btn" (click)="goBack()">
+        <span class="label">Back</span>
+     </button>
+     <button class="nav-btn-small home-btn" (click)="goHome()">
+        <span class="label">Home</span>
+     </button>
+ 
     </div>
 
   </div>
 
-</div>
+

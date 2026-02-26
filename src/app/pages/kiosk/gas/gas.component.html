@@ -11,7 +11,7 @@
       <button class="dept-card electricity"
               (click)="GasPay()">
         <span class="icon">🧾</span>
-        <span class="label">Bill Details / Payment</span>
+        <span class="label">Bill Payment</span>
       </button>
 
       <!-- <button class="dept-card water"
@@ -23,7 +23,7 @@
       <button class="dept-card gas"
               (click)="selectDepartment('gas')">
         <span class="icon">🔎</span>
-        <span class="label">New Gas Connection</span>
+        <span class="label">Check Gas Connection</span>
       </button>
 
       <button class="dept-card municipality"
@@ -41,11 +41,20 @@
       <button class="dept-card admin"
               (click)="selectDepartment('admin')">
         <span class="icon">✍</span>
-        <span class="label">Book a cylinder</span>
+        <span class="label">Book cylinder</span>
       </button>
 
     </div>
 
+    </div> <div class="footer-actions">
+    <button class="nav-btn-small back-btn" (click)="goBack()">
+      <span class="label">Back</span>
+    </button>
+
+    <button class="nav-btn-small home-btn" (click)="goHome()">
+      <span class="label">Home</span>
+    </button>
+  </div>
   </div>
 
-</div>
+
