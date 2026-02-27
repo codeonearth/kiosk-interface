@@ -45,24 +45,46 @@
   <!-- ✅ OTP SCREEN -->
   <ng-container *ngIf="selectedMethod === 'otp'">
 
-    <div class="auth-box">
-      <p>Enter 6 Digit OTP</p>
+    <div class="auth-box" *ngIf="selectedMethod === 'otp'">
 
-      <input type="text"
-             maxlength="6"
-             [(ngModel)]="otp"
-             class="otp-input" />
+  <p>Enter 6 Digit OTP</p>
 
-      <button class="auth-btn"
-              (click)="verifyOtp()">
-        Authenticate
-      </button>
+  <input type="text"
+         maxlength="6"
+         [value]="otp"
+         readonly
+         (click)="showKeyboard = true"
+         class="otp-input"
+         placeholder="Enter OTP" />
 
-      <button class="back-btn"
-              (click)="goBack()">
-        Back
-      </button>
-    </div>
+  <!-- 🔥 Custom Keyboard -->
+  <div class="keyboard" *ngIf="showKeyboard">
+
+
+
+  <button *ngFor="let key of keys"
+          (click)="pressKey(key)">
+    {{ key }}
+  </button>
+
+  <button class="backspace"
+          (click)="backspace()">⌫</button>
+
+</div>
+
+  
+
+  <button class="auth-btn"
+          (click)="verifyOtp()">
+    Authenticate
+  </button>
+
+  <button class="back-btn"
+          (click)="goBack()">
+    Back
+  </button>
+
+</div>
 
   </ng-container>
 

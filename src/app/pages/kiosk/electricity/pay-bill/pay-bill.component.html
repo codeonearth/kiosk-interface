@@ -27,7 +27,8 @@
     <!-- STEP 1 : STATE -->
     <div *ngIf="step >= 1 && !isApartment" class="form-group">
       <label>State</label>
-      <select [(ngModel)]="selectedState" (change)="onStateChange()">
+      <select [(ngModel)]="selectedState"
+              (change)="onStateChange()">
         <option value="">Select State</option>
         <option *ngFor="let state of states" [value]="state">
           {{ state }}
@@ -48,27 +49,25 @@
       </select>
     </div>
 
-<!-- STEP 3 : DYNAMIC INPUTS -->
-<div *ngIf="step >= 3 && selectedBoard">
-
-  <!-- DISTRICT / TYPE -->
-  <div *ngIf="selectedBoard.districtOrType" class="form-group">
-    <label>District / Type</label>
-    <select [(ngModel)]="selectedDistrictOrType">
-      <option value="">Select</option>
-      <option [value]="selectedBoard.districtOrType">
-        {{ selectedBoard.districtOrType }}
-      </option>
-    </select>
-  </div>
-
     <!-- STEP 3 : DYNAMIC INPUTS -->
     <div *ngIf="step >= 3 && selectedBoard">
+
+      <div *ngIf="selectedBoard.districtOrType" class="form-group">
+        <label>District / Type</label>
+        <select [(ngModel)]="selectedDistrictOrType">
+          <option value="">Select</option>
+          <option [value]="selectedBoard.districtOrType">
+            {{ selectedBoard.districtOrType }}
+          </option>
+        </select>
+      </div>
 
       <div *ngIf="selectedBoard.consumerNumber" class="form-group">
         <label>Consumer Number</label>
         <input type="text"
                [(ngModel)]="consumerNumber"
+               readonly
+               (click)="openKeyboard('consumerNumber')"
                placeholder="Enter Consumer Number">
       </div>
 
@@ -76,6 +75,8 @@
         <label>Service Number</label>
         <input type="text"
                [(ngModel)]="serviceNumber"
+               readonly
+               (click)="openKeyboard('serviceNumber')"
                placeholder="Enter Service Number">
       </div>
 
@@ -83,6 +84,8 @@
         <label>Connection Number</label>
         <input type="text"
                [(ngModel)]="connectionNumber"
+               readonly
+               (click)="openKeyboard('connectionNumber')"
                placeholder="Enter Connection Number">
       </div>
 
@@ -90,19 +93,35 @@
         <label>Tenant Number</label>
         <input type="text"
                [(ngModel)]="tenantNumber"
+               readonly
+               (click)="openKeyboard('tenantNumber')"
                placeholder="Enter Tenant Number">
+      </div>
+
+      <button class="proceed-btn"
+              (click)="nextStep()">
+        Proceed
+      </button>
+
+      <div class="note">
+        By continuing, you allow bill fetch & reminder service.
       </div>
 
     </div>
 
-    <!-- BUTTON -->
-    <button class="proceed-btn" (click)="nextStep()">
-      {{ step < 3 ? 'Next' : 'Proceed' }}
+  </div>
+
+  <!-- 🔥 RIGHT SIDE KEYBOARD -->
+  <div class="keyboard" *ngIf="showKeyboard">
+
+    <button *ngFor="let key of keys"
+            (click)="pressKey(key)">
+      {{ key }}
     </button>
 
-    <div class="note">
-      By continuing, you allow bill fetch & reminder service.
-    </div>
+    <button class="backspace"
+            (click)="backspace()">⌫</button>
 
   </div>
+
 </div>

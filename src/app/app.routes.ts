@@ -58,6 +58,12 @@ export const routes: Routes = [
           import('./pages/kiosk/electricity/electricity.component')
             .then(m => m.ElectricityComponent)
     },
+    {
+        path: 'electricity/complaint',
+        loadComponent: () => 
+          import('./pages/kiosk/electricity/complaint/complaint.component')
+            .then(m => m.ComplaintComponent)
+    },
      {
         path: 'water',
         loadComponent: () => 

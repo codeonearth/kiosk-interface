@@ -1,1 +1,63 @@
-<p>complaint works!</p>
+<div class="kiosk-wrapper">
+
+  <div class="kiosk-card">
+
+    <h1 class="title">⚡ Electricity Complaint</h1>
+
+    <!-- STEP 1 : MOBILE NUMBER -->
+    <div class="form-group">
+
+      <label>Enter Mobile Number</label>
+
+      <input type="text"
+             maxlength="10"
+             [(ngModel)]="mobileNumber"
+             (ngModelChange)="onMobileChange()"
+             placeholder="Enter 10 digit mobile number"
+             class="input-box">
+
+    </div>
+
+    <!-- STEP 2 : COMPLAINT DROPDOWN (AFTER 10 DIGITS) -->
+    <div *ngIf="showComplaintDropdown"
+         class="form-group">
+
+      <label>Select Complaint Reason</label>
+
+      <select [(ngModel)]="selectedComplaint"
+              class="input-box">
+
+        <option value="">Select Complaint</option>
+
+        <option *ngFor="let complaint of complaints"
+                [value]="complaint">
+          {{ complaint }}
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- STEP 3 : SUBMIT -->
+   <div class="btn-center">
+  <button class="submit-btn"
+          [disabled]="mobileNumber.length !== 10 || !selectedComplaint"
+          (click)="submitComplaint()">
+    Submit Complaint
+  </button>
+</div>
+
+  </div>
+
+  <!-- FOOTER BUTTONS -->
+  <div class="footer-actions">
+    <button class="nav-btn-small back-btn" (click)="goBack()">
+      Back
+    </button>
+
+    <button class="nav-btn-small home-btn" (click)="goHome()">
+      Home
+    </button>
+  </div>
+
+</div>

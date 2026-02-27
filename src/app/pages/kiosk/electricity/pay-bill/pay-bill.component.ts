@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ElectricityBoard } from '../../../../models/electricity-board.model';
 import { ElectricityService } from '../../../../core/services/kiosk/electricity.service';
@@ -21,8 +21,10 @@ export class PayBillComponent implements OnInit {
   // ===== DROPDOWN DATA =====
   states: string[] = [];
   boards: ElectricityBoard[] = [];
-selectedDistrictOrType: string = '';
-districtOrTypes: string[] = []; 
+
+  selectedDistrictOrType: string = '';
+  districtOrTypes: string[] = [];
+
   // ===== SELECTED VALUES =====
   selectedState: string = '';
   selectedBoardId: number | null = null;
@@ -33,11 +35,51 @@ districtOrTypes: string[] = [];
   serviceNumber: string = '';
   connectionNumber: string = '';
   tenantNumber: string = '';
-groupedBoards: any[] = [];
-  constructor(private electricityService: ElectricityService , private router: Router) {}
+
+  // ===== KEYBOARD =====
+  showKeyboard: boolean = false;
+  activeField: string = '';
+  keys: string[] = ['1','2','3','4','5','6','7','8','9','0'];
+
+  constructor(
+    private electricityService: ElectricityService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadStates();
+  }
+
+  // =============================
+  // KEYBOARD LOGIC
+  // =============================
+  openKeyboard(field: string) {
+    this.activeField = field;
+    this.showKeyboard = true;
+  }
+
+  pressKey(key: string) {
+    if (!this.activeField) return;
+
+    (this as any)[this.activeField] += key;
+  }
+
+  backspace() {
+    if (!this.activeField) return;
+
+    (this as any)[this.activeField] =
+      (this as any)[this.activeField].slice(0, -1);
+  }
+
+  @HostListener('document:click', ['$event'])
+  closeKeyboardOutside(event: any) {
+    const clickedInside =
+      event.target.closest('.keyboard') ||
+      event.target.closest('input');
+
+    if (!clickedInside) {
+      this.showKeyboard = false;
+    }
   }
 
   // =============================
@@ -54,7 +96,6 @@ groupedBoards: any[] = [];
     this.selectedBoardId = null;
     this.selectedBoard = undefined;
     this.boards = [];
-    this.districtOrTypes = [];
     this.consumerNumber = '';
     this.serviceNumber = '';
     this.connectionNumber = '';
@@ -66,12 +107,8 @@ groupedBoards: any[] = [];
   // =============================
   loadStates() {
     this.electricityService.getStates().subscribe({
-      next: (data) => {
-        this.states = data;
-      },
-      error: (err) => {
-        console.error('Error loading states:', err);
-      }
+      next: (data) => this.states = data,
+      error: (err) => console.error(err)
     });
   }
 
@@ -90,13 +127,9 @@ groupedBoards: any[] = [];
           this.selectedBoardId = null;
           this.step = 2;
         },
-        error: (err) => {
-          console.error('Error loading boards:', err);
-        }
+        error: (err) => console.error(err)
       });
   }
-
-
 
   // =============================
   // BOARD CHANGE
@@ -109,25 +142,17 @@ groupedBoards: any[] = [];
       this.step = 3;
     }
   }
-  
-  
- 
 
   // =============================
   // FINAL SUBMIT
   // =============================
   nextStep() {
 
-    if (this.step < 3) {
-      this.step++;
-      return;
-    }
-
-     const payload = {
+    const payload = {
       type: this.isApartment ? 'Apartment' : 'Electricity',
       state: this.selectedState,
       boardId: this.selectedBoardId,
-      districtOrType: this.selectedDistrictOrType,  // ✅ added
+      districtOrType: this.selectedDistrictOrType,
       consumerNumber: this.consumerNumber,
       serviceNumber: this.serviceNumber,
       connectionNumber: this.connectionNumber,
@@ -136,7 +161,6 @@ groupedBoards: any[] = [];
 
     console.log("Final Submit:", payload);
 
-    // 🔥 Later you will call backend here
     alert("Proceeding to payment...");
     this.router.navigate(['/kiosk/redirect']);
   }
