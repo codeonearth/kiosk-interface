@@ -1,44 +1,29 @@
 <div class="auth-container">
 
   <h1 class="auth-title">Choose Authentication Method</h1>
-  <p class="auth-subtitle">Please select one of the options below</p>
+  <p class="auth-subtitle">Secure access to kiosk services</p>
 
-  <!-- ✅ SELECTION SCREEN -->
-  <!-- <ng-container *ngIf="selectedMethod === null">
+  <!-- ================= SELECTION SCREEN ================= -->
+  <ng-container *ngIf="selectedMethod === null">
 
-    <div class="dept-grid">
-      <button class="dept-card"
+    <div class="auth-new">
+      <button class="dept-card fingerprint"
               (click)="selectAuth('fingerprint')">
-        🖐️ Fingerprint
+        <span class="icon">🖐️</span>
+        <span>FINGERPRINT</span>
       </button>
 
-      <button class="dept-card"
+      <button class="dept-card otp"
               (click)="selectAuth('otp')">
-        📱 OTP
+        <span class="icon">📱</span>
+        <span>OTP</span>
       </button>
     </div>
 
-  </ng-container> -->
-  <ng-container *ngIf="selectedMethod === null">
-
-  <div class="dept-grid">
-    <button class="dept-card fingerprint"
-            (click)="selectAuth('fingerprint')">
-      <span class="icon">🖐️</span>
-      <span class="label">FINGERPRINT</span>
-    </button>
-
-    <button class="dept-card otp"
-            (click)="selectAuth('otp')">
-      <span class="icon">📱</span>
-      <span class="label">OTP</span>
-    </button>
-  </div>
-
-</ng-container>
+  </ng-container>
 
 
-  <!-- ✅ FINGERPRINT SCREEN -->
+  <!-- ================= FINGERPRINT ================= -->
   <ng-container *ngIf="selectedMethod === 'fingerprint'">
 
     <div class="auth-box">
@@ -59,49 +44,45 @@
   </ng-container>
 
 
-  <!-- ✅ OTP SCREEN -->
+  <!-- ================= OTP ================= -->
   <ng-container *ngIf="selectedMethod === 'otp'">
 
-    <div class="auth-box" *ngIf="selectedMethod === 'otp'">
+    <div class="auth-box">
 
-  <p>Enter 6 Digit OTP</p>
+      <p>Enter 6 Digit OTP</p>
 
-  <input type="text"
-         maxlength="6"
-         [value]="otp"
-         readonly
-         (click)="showKeyboard = true"
-         class="otp-input"
-         placeholder="Enter OTP" />
+      <input type="text"
+             maxlength="6"
+             [value]="otp"
+             readonly
+             (click)="showKeyboard = true"
+             class="otp-input"
+             placeholder="------" />
 
-  <!-- 🔥 Custom Keyboard -->
-  <div class="keyboard" *ngIf="showKeyboard">
+      <!-- 🔥 Custom Keyboard -->
+      <div class="keyboard" *ngIf="showKeyboard">
 
+        <button *ngFor="let key of keys"
+                (click)="pressKey(key)">
+          {{ key }}
+        </button>
 
+        <button class="backspace"
+                (click)="backspace()">⌫</button>
 
-  <button *ngFor="let key of keys"
-          (click)="pressKey(key)">
-    {{ key }}
-  </button>
+      </div>
 
-  <button class="backspace"
-          (click)="backspace()">⌫</button>
+      <button class="auth-btn"
+              (click)="verifyOtp()">
+        Authenticate
+      </button>
 
-</div>
+      <button class="back-btn"
+              (click)="goBack()">
+        Back
+      </button>
 
-  
-
-  <button class="auth-btn"
-          (click)="verifyOtp()">
-    Authenticate
-  </button>
-
-  <button class="back-btn"
-          (click)="goBack()">
-    Back
-  </button>
-
-</div>
+    </div>
 
   </ng-container>
 

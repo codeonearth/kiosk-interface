@@ -177,57 +177,95 @@
   grid-column: span 3;
   background: #dc2626;
 }
-
-/* Grid Layout */
-.dept-grid {
+/* ===============================
+   AUTH BUTTON WRAPPER
+================================= */
+.auth-new {
   display: flex;
-  gap: 60px;
   justify-content: center;
   align-items: center;
+  gap: 40px;
+  margin-top: 40px;
+  animation: fadeInUp 0.6s ease;
 }
 
-/* Card Button Base Style */
+/* ===============================
+   BUTTON STYLE
+================================= */
 .dept-card {
-  width: 320px;
-  height: 200px;
+  width: 230px;
+  height: 150px;
+  border-radius: 20px;
   border: none;
-  border-radius: 30px;
   cursor: pointer;
-  color: white;
-  font-size: 26px;
-  font-weight: 500;
-  letter-spacing: 2px;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+
   transition: all 0.3s ease;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
 /* Icon */
 .dept-card .icon {
-  font-size: 50px;
-  margin-bottom: 15px;
+  font-size: 34px;
+  margin-bottom: 10px;
 }
 
-/* Fingerprint Gradient */
+/* Fingerprint Style */
 .fingerprint {
   background: linear-gradient(135deg, #16a34a, #22c55e);
 }
 
-/* OTP Gradient */
+/* OTP Style */
 .otp {
-  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
 }
 
 /* Hover Effect */
 .dept-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
 }
 
 /* Click Effect */
 .dept-card:active {
-  transform: scale(0.97);
+  transform: scale(0.96);
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================= */
+@media (max-width: 768px) {
+  .auth-new {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .dept-card {
+    width: 90%;
+    max-width: 280px;
+    height: 130px;
+  }
+}
+
+/* ===============================
+   ANIMATION
+================================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
