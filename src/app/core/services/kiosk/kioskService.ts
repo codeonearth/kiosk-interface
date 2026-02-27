@@ -21,9 +21,9 @@ export class KioskService {
   }
 
 
-  getPageData(pageKey: string): Observable<any> {
+  getPageData(pageKey: string, languageCode: string): Observable<any> {
       return this.http.get<any>(environment.API_URL + GlobalConstant.API_END_POINTS.KIOSK.GET_PAGE_DATA,{
-      params:{ pageKey: this._encryptionService.encryptData(pageKey) }  
+      params:{ pageKey: this._encryptionService.encryptData(pageKey), langCode: languageCode }  
     });
   }
 
@@ -31,6 +31,15 @@ export class KioskService {
   GetLanguages(): Observable<any> {
     return this.http.get<any>(environment.API_URL + GlobalConstant.API_END_POINTS.KIOSK.GET_LANGUAGES);
   }
+
+
+  verifyUser(phone: string): Observable<any> {
+    return this.http.get<any>(environment.API_URL + GlobalConstant.API_END_POINTS.KIOSK.VERIFY_USER, { 
+      params: { encryptedData: this._encryptionService.encryptData(phone) } 
+    });
+   }
+
+
 
 }
 

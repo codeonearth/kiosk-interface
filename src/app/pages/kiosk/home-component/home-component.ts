@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { KioskService } from '../../../core/services/kiosk/kioskService';
 import { EncryptionService } from '../../../core/services/kiosk/encryption.service';
 
@@ -21,10 +21,12 @@ export class HomeComponent {
 
 
   ngOnInit() {
-    this.data = this._kioskservice.getPageData('home').subscribe(x => {
+
+    
+     
+    this.data = this._kioskservice.getPageData('home', 'en').subscribe(x => {
       this.data = x;
       
-
     });
 
     this.languageData = this._kioskservice.GetLanguages().subscribe(x =>{
@@ -37,15 +39,11 @@ export class HomeComponent {
   }
 
   selectLanguage(lang: 'en' | 'hi') {
-    // this.router.navigate(['otp'], { relativeTo: this.route });
+    localStorage.removeItem('selectedLang');
+    localStorage.setItem('selectedLang', lang)
 
 
-
-
-
-    this.router.navigate(['/kiosk/otp'], {
-      queryParams: { lang }
-    });
+    this.router.navigate(['/kiosk/otp']);
   }
 }
 

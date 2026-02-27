@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { KioskService } from '../../../core/services/kiosk/kioskService';
 
 @Component({
@@ -10,6 +10,7 @@ import { KioskService } from '../../../core/services/kiosk/kioskService';
   styleUrl: './electricity.component.scss'
 })
 export class ElectricityComponent implements OnInit {
+  lang: any;
  constructor(private router: Router, private _kioskservice: KioskService) {}
 
   pageData : any;
@@ -17,7 +18,9 @@ export class ElectricityComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.pageData = this._kioskservice.getPageData('electricity-services').subscribe(data => {
+    this.lang = localStorage.getItem('selectedLang') || 'en';
+
+    this.pageData = this._kioskservice.getPageData('electricity-services', this.lang).subscribe(data => {
       this.pageData = data;
       console.log('Electricity page data:', this.pageData);
     });

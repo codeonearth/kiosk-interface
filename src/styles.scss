@@ -17,12 +17,10 @@ body {
   animation: fadeIn 0.8s ease-in-out;
 }
 
-/* =========================
-   Glass Card Container
-========================= */
+
 .kiosk-card {
   width: 100%;
-  max-width: 1150px; /* increased width */
+  max-width: 1150px; 
   padding: 3rem 5.5rem;
 
   border-radius: 22px;

@@ -4,6 +4,7 @@ export const GlobalConstant = {
             CHECK_KIOSK_ACTIVE:'IsActive',
             GET_PAGE_DATA:'GetPageData',
             GET_LANGUAGES:'GetLanguages',
+            VERIFY_USER:'verifyUser',
         },
         KIOSK_ELECTRICITY: {
      
