@@ -21,4 +21,12 @@ constructor(private router: Router) {}
     // later → route based on service
     // this.router.navigate(['/kiosk/electricity', service]);
   }
-} 
+    goBack() {
+    this.router.navigate(['kiosk/department']);
+  }
+
+  goHome() {
+    this.router.navigate(['kiosk/home']);
+  }
+  }
+ 

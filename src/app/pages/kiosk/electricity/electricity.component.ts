@@ -31,12 +31,20 @@ export class ElectricityComponent implements OnInit {
  selectElectricityService(service: any) {
     
   this.router.navigate([service]);
+ }
+   goBack() {
+    // Navigates back to the 'Select Department' screen
+    this.router.navigate(['kiosk/department']);
+}
 
-    
+goHome() {
+    // Navigates all the way back to the 'Welcome' screen
+    this.router.navigate(['kiosk/home']);
+} 
 
   }
   
 
 
 
-}
+

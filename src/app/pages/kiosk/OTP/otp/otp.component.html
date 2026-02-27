@@ -61,7 +61,7 @@
 
 
 <div class="kiosk-wrapper" *ngIf="data">
-  <div class="kiosk-card">
+  <div class="kiosk-card1">
     <ng-container *ngFor="let comp of data?.components">
     <div class="header">
       <h1 *ngIf="comp.type === 'text' && comp.order === 1">
@@ -72,7 +72,7 @@
          </p>
     </div>
     <div class="form-group">
-      <label *ngIf="comp.type === 'input' && comp.order === 3">{{ comp.config['label'] }}</label>
+      <label *ngIf="comp.type === 'input' && comp.order === 3">{{ comp.text['input'] }}</label>
       <input *ngIf="comp.type === 'input' && comp.order === 3"
           type="{{ comp.type }}"
           maxlength="{{ comp.config['maxLength'] }}"

@@ -1,0 +1,215 @@
+.form-group {
+  margin-bottom: 2rem;
+  text-align: left;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.input-box {
+  width: 100%;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  padding: 0 15px;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  outline: none;
+}
+
+.input-box::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+.btn-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.submit-btn {
+  margin-top: 1.5rem;
+  width: 220px;
+  height: 50px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #166534, #22c55e);
+  color: white;
+  transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}.footer-actions {
+  display: flex;
+  justify-content: center; 
+  gap: 15rem;              /* Adjust this to align under the grid gaps */
+  margin-top: 2.5rem;      /* Space below the main palette */
+  width: 100%;
+}
+
+/* Small navigation buttons with matching styles */
+.nav-btn-small {
+  width: 140px;            /* Keeps them smaller as requested */
+  height: 55px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22); /* Same border as main cards */
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Adds depth outside the palette */
+}
+
+/* Back Button: Matches Check Status theme */
+.back-btn {
+  background: linear-gradient(135deg, #1f2933, #374151);
+}
+
+/* Home Button: Matches Meter Request/Blue theme */
+.home-btn {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+}
+
+.nav-btn-small:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-btn-small .label {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+/* This ensures the Card and Buttons are one above the other */
+.kiosk-wrapper {
+  display: flex;
+  flex-direction: column;    /* Forces vertical stacking: Card on top, Buttons below */
+  align-items: center;       /* Centers the Card and the Buttons container horizontally */
+  justify-content: center;   /* Centers the whole group vertically on the screen */
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* This keeps the dark palette centered */
+.kiosk-card {
+  width: 100%;
+  max-width: 1000px;         /* Keeps the palette from stretching too wide */
+  margin: 0 auto;            /* Standard centering technique */
+}
+
+/* This handles the buttons below the palette */
+.footer-actions {
+  display: flex;
+  justify-content: center;   /* Centers the two buttons as a pair */
+  gap: 15rem;                /* Space between Back and Home */
+  margin-top: 3rem;          /* Vertical gap between the dark tile and buttons */
+  width: 100%;
+}
+
+
+
+
+/* =========================
+   Tablet
+========================= */
+@media (max-width: 1024px) {
+  .kiosk-card {
+    padding: 3rem;
+  }
+
+  .dept-grid {
+    gap: 2.2rem;
+  }
+}
+
+/* =========================
+   Mobile
+========================= */
+@media (max-width: 768px) {
+  .kiosk-card {
+    padding: 2.2rem;
+  }
+
+  .dept-grid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .dept-card {
+    height: 135px;
+  }
+}
+
+/* =========================
+   Small Phones
+========================= */
+@media (max-width: 480px) {
+  .kiosk-card {
+    padding: 1.6rem;
+  }
+
+  .dept-card {
+    height: 120px;
+  }
+}
+
+/* =========================
+   Animations
+========================= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFloat {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

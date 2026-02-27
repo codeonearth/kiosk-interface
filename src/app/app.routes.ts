@@ -41,6 +41,12 @@ export const routes: Routes = [
             .then(m => m.OtpComponent)
     },
     {
+        path: 'authentication',
+        loadComponent: () => 
+          import('./pages/kiosk/OTP/authentication/authentication.component')
+            .then(m => m.AuthenticationComponent)
+    },
+    {
         path: 'department',
         loadComponent: () => 
           import('./pages/kiosk/department/department.component')
@@ -51,6 +57,12 @@ export const routes: Routes = [
         loadComponent: () => 
           import('./pages/kiosk/electricity/electricity.component')
             .then(m => m.ElectricityComponent)
+    },
+    {
+        path: 'electricity/complaint',
+        loadComponent: () => 
+          import('./pages/kiosk/electricity/complaint/complaint.component')
+            .then(m => m.ComplaintComponent)
     },
      {
         path: 'water',

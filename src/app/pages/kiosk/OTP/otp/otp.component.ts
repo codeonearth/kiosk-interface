@@ -63,7 +63,8 @@ lang: 'en' | 'hi' = 'en';
 }
 
   sendOtp() {
-    this.otpSent = true;
+    this.router.navigate(['/kiosk/authentication']);
+    // this.otpSent = true;
   }
 
 verifyOtp() {

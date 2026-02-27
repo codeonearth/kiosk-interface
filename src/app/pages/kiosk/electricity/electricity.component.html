@@ -1,23 +1,39 @@
-
 <div class="kiosk-wrapper" *ngIf="pageData">
+  
   <div class="kiosk-card">
     <ng-container *ngFor="let comp of pageData?.components">
-        <h1 *ngIf="comp.type === 'text' && comp.order === 1"
-              class="title">
-              {{ comp.text['text'] }}
-        </h1>
-      </ng-container>
+      <h1 *ngIf="comp.type === 'text' && comp.order === 1" class="title">
+        {{ comp.text['text'] }}
+      </h1>
+    </ng-container>
+
     <div class="dept-grid">
       <ng-container *ngFor="let comp of pageData?.components">
-          <button class="dept-card {{comp.config['class']}}" 
-              (click)="selectElectricityService(comp.config['route'])" *ngIf="comp.type === 'button'">
-            <span class="icon">{{ comp.config['icon'] }}</span>
-            <span class="label">{{ comp.text['text'] }}</span>
-          </button>
-        </ng-container>
+        <button class="dept-card {{comp.config['class']}}" 
+                (click)="selectElectricityService(comp.config['route'])" 
+                *ngIf="comp.type === 'button'">
+          <span class="icon">{{ comp.config['icon'] }}</span>
+          <span class="label">{{ comp.text['text'] }}</span>
+        </button>
+      </ng-container>
     </div>
+  </div> 
+  <div class="footer-actions">
+    <button class="nav-btn-small back-btn" (click)="goBack()">
+      <span class="label">Back</span>
+    </button>
+
+    <button class="nav-btn-small home-btn" (click)="goHome()">
+      <span class="label">Home</span>
+    </button>
   </div>
+
 </div>
+
+
+
+
+   
 
 
 <!-- 
