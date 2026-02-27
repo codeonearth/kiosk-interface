@@ -1,0 +1,69 @@
+<div class="auth-container">
+
+  <h1 class="auth-title">Choose Authentication Method</h1>
+  <p class="auth-subtitle">Please select one of the options below</p>
+
+  <!-- ✅ SELECTION SCREEN -->
+  <ng-container *ngIf="selectedMethod === null">
+
+    <div class="auth-options">
+      <button class="auth-card fingerprint-card"
+              (click)="selectAuth('fingerprint')">
+        🖐️ Fingerprint
+      </button>
+
+      <button class="auth-card otp-card"
+              (click)="selectAuth('otp')">
+        📱 OTP
+      </button>
+    </div>
+
+  </ng-container>
+
+
+  <!-- ✅ FINGERPRINT SCREEN -->
+  <ng-container *ngIf="selectedMethod === 'fingerprint'">
+
+    <div class="auth-box">
+      <div class="fingerprint-icon">🖐️</div>
+      <p>Place your finger on the scanner</p>
+
+      <button class="auth-btn"
+              (click)="verifyFingerPrint()">
+        Authenticate
+      </button>
+
+      <button class="back-btn"
+              (click)="goBack()">
+        Back
+      </button>
+    </div>
+
+  </ng-container>
+
+
+  <!-- ✅ OTP SCREEN -->
+  <ng-container *ngIf="selectedMethod === 'otp'">
+
+    <div class="auth-box">
+      <p>Enter 6 Digit OTP</p>
+
+      <input type="text"
+             maxlength="6"
+             [(ngModel)]="otp"
+             class="otp-input" />
+
+      <button class="auth-btn"
+              (click)="verifyOtp()">
+        Authenticate
+      </button>
+
+      <button class="back-btn"
+              (click)="goBack()">
+        Back
+      </button>
+    </div>
+
+  </ng-container>
+
+</div>

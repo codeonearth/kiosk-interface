@@ -41,6 +41,12 @@ export const routes: Routes = [
             .then(m => m.OtpComponent)
     },
     {
+        path: 'authentication',
+        loadComponent: () => 
+          import('./pages/kiosk/OTP/authentication/authentication.component')
+            .then(m => m.AuthenticationComponent)
+    },
+    {
         path: 'department',
         loadComponent: () => 
           import('./pages/kiosk/department/department.component')
