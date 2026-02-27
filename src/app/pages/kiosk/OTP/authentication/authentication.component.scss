@@ -177,3 +177,57 @@
   grid-column: span 3;
   background: #dc2626;
 }
+
+/* Grid Layout */
+.dept-grid {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card Button Base Style */
+.dept-card {
+  width: 320px;
+  height: 200px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  color: white;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Icon */
+.dept-card .icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+/* Fingerprint Gradient */
+.fingerprint {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+}
+
+/* OTP Gradient */
+.otp {
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+}
+
+/* Hover Effect */
+.dept-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+}
+
+/* Click Effect */
+.dept-card:active {
+  transform: scale(0.97);
+}

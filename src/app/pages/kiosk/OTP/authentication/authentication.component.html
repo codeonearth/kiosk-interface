@@ -4,21 +4,38 @@
   <p class="auth-subtitle">Please select one of the options below</p>
 
   <!-- ✅ SELECTION SCREEN -->
-  <ng-container *ngIf="selectedMethod === null">
+  <!-- <ng-container *ngIf="selectedMethod === null">
 
-    <div class="auth-options">
-      <button class="auth-card fingerprint-card"
+    <div class="dept-grid">
+      <button class="dept-card"
               (click)="selectAuth('fingerprint')">
         🖐️ Fingerprint
       </button>
 
-      <button class="auth-card otp-card"
+      <button class="dept-card"
               (click)="selectAuth('otp')">
         📱 OTP
       </button>
     </div>
 
-  </ng-container>
+  </ng-container> -->
+  <ng-container *ngIf="selectedMethod === null">
+
+  <div class="dept-grid">
+    <button class="dept-card fingerprint"
+            (click)="selectAuth('fingerprint')">
+      <span class="icon">🖐️</span>
+      <span class="label">FINGERPRINT</span>
+    </button>
+
+    <button class="dept-card otp"
+            (click)="selectAuth('otp')">
+      <span class="icon">📱</span>
+      <span class="label">OTP</span>
+    </button>
+  </div>
+
+</ng-container>
 
 
   <!-- ✅ FINGERPRINT SCREEN -->
